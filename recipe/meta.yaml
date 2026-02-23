@@ -1,5 +1,5 @@
 {% set name = "pymde" %}
-{% set version = "0.1.18" %}
+{% set version = "0.3.0" %}
 
 
 package:
@@ -7,11 +7,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pymde-{{ version }}.tar.gz
-  sha256: 67f83fd269046a338dca1ebea71003a65b53c72467b6559bfc5eda30a86d3d33
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pymde-{{ version }}.tar.gz
+  sha256: b203c7e415ec46d04cc737c2ec0081731b5f839ac0f40b407270d8393aa5ea0e
 
 build:
-  number: 2
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
   skip: true  # [win]
 
@@ -22,6 +22,7 @@ requirements:
     - cython                                 # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
   host:
     - cython
     - pip
